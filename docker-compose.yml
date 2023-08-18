@@ -19,6 +19,8 @@ services:
       - LOG_LEVEL=${LOG_LEVEL:-WARNING}
     ports:
       - ${CORE_PORT:-1865}:80
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       - ./core:/app
     command:

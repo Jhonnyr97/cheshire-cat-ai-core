@@ -83,6 +83,16 @@ class LLMOpenAIConfig(LLMSettings):
                            "also more flexible than ChatGPT.",
         }
 
+class LLMTextGenConfig(LLMSettings):
+    model_url: str
+    _pyclass: PyObject = langchain.llms.TextGen
+
+    class Config:
+        schema_extra = {
+            "name_human_readable": "TextGen",
+            "description": "TextGen"
+        }
+
 
 # https://learn.microsoft.com/en-gb/azure/cognitive-services/openai/reference#chat-completions
 class LLMAzureChatOpenAIConfig(LLMSettings):
@@ -220,7 +230,8 @@ SUPPORTED_LANGUAGE_MODELS = [
     LLMAzureOpenAIConfig,
     LLMAzureChatOpenAIConfig,
     LLMAnthropicConfig,
-    LLMGooglePalmConfig
+    LLMGooglePalmConfig,
+    LLMTextGenConfig
 ]
 
 # LLM_SCHEMAS contains metadata to let any client know
